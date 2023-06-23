@@ -16,6 +16,8 @@ let dayOfWeek: string[] = [];
 
 let apiData: Weather | undefined = undefined;
 
+let savedSearchQuery: string = "";
+
 const getData = async(cityName: string) =>{
     try{
         apiData = await apiMain(cityName);
@@ -29,8 +31,12 @@ const getData = async(cityName: string) =>{
 }
 
 app.get('/', async(req, res) => {
-    apiData = await getData("Antwerp");
-    
+    if (savedSearchQuery === ""){
+        apiData = await getData("Antwerp");
+    }
+    else {
+        apiData = await getData(savedSearchQuery);
+    }
     res.render('index', {apiData: apiData, dayOfWeek: dayOfWeek, error : undefined});
 });
 
@@ -41,6 +47,7 @@ app.post('/', async(req, res) => {
     if (searchQuery.match(/^[a-zA-Z0-9 ]*$/)){
         apiData = await getData(searchQuery);
         if (apiData){
+            savedSearchQuery = searchQuery;
             res.render('index', {apiData: apiData, dayOfWeek: dayOfWeek, error : undefined});
         }
         else{

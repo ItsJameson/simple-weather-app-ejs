@@ -10,6 +10,7 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
+    transition: 0.5s;
 }
 
 body,
@@ -19,11 +20,12 @@ html {
     background-image: linear-gradient(0deg, rgba(39, 159, 233, 0.634), rgba(230, 105, 249, 0.035)), url('../images/sky-background-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 body {
@@ -108,7 +110,7 @@ main {
 
 #location-name {
     padding: 0.5rem;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     text-align: center;
 }
@@ -138,7 +140,6 @@ main {
 }
 
 .temp p {
-    font-size: 18px;
     text-align: center;
     padding-bottom: 1rem;
 }
@@ -163,16 +164,24 @@ main {
     flex-wrap: wrap;
 }
 
-.properties div {
-    padding: 0.25rem;
+.properties div:first-of-type  {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
 
+.properties div:last-of-type  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
+}
+
 .properties div p {
-    padding: 0 0.25rem 0 0.25rem;
+    padding: 0.25rem;
 }
 
 .forecast {
@@ -207,10 +216,115 @@ main {
 
 footer {
     text-align: center;
+    padding: 0.25rem;
 }
 
 footer p {
+    font-size: 16px;
     color: var(--text-faded);
     padding: 0.25rem;
 }
 
+@media all and (max-width:500px){
+
+    main {
+        width: min(60ch, 100%);
+    }
+
+    #main-wrapper  {
+        padding-bottom: 1.5rem;
+    }
+
+    .temp {
+        padding: 0.25rem 0 0.25rem 0;
+    }
+    
+    .temp h2 {
+        font-size: 82px;
+        padding: 0;
+    }
+    
+    .temp h2 span {
+        font-size: 32px;
+    }
+
+    .temp p {
+        padding-bottom: 0.5rem;
+    }
+    
+    .temp img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .properties {
+        padding: 0.25rem;
+    }
+
+    .forecast {
+        padding: 0.75rem 0 0.75rem 0;
+    }
+    
+    .forecast-day {
+        padding: 0.75rem 0.25rem 0.75rem 0.25rem;
+        height: 100px;
+        width: 60px;
+    }
+    
+    .forecast-day > * {
+        padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    }
+}
+
+@media all and (max-height:750px){
+
+    main {
+        width: min(60ch, 100%);
+        height: 100vh;
+        justify-content: space-around;
+    }
+
+    #main-wrapper  {
+        padding-bottom: 1.5rem;
+    }
+
+    .temp {
+        padding: 0.25rem 0 0.25rem 0;
+    }
+    
+    .temp h2 {
+        font-size: 82px;
+        padding: 0;
+    }
+    
+    .temp h2 span {
+        font-size: 32px;
+    }
+
+    .temp p {
+        padding-bottom: 0.5rem;
+    }
+    
+    .temp img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .properties {
+        padding: 0.25rem;
+    }
+
+    .forecast {
+        padding: 0.75rem 0 0.75rem 0;
+    }
+    
+    .forecast-day {
+        padding: 0.75rem 0.25rem 0.75rem 0.25rem;
+        height: 100px;
+        width: 60px;
+    }
+    
+    .forecast-day > * {
+        padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    }
+}
