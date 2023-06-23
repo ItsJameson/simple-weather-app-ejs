@@ -1,0 +1,41 @@
+<main>
+    <div id="main-wrapper">
+        <div class="search">
+            <form action="/" method="post">
+                <input type="search" name="search" id="search">
+                <button type="submit">Search</button>
+            </form>
+            <p style="color: red; text-align: center; padding: 0.5rem;"><%= error %></p>
+        </div>
+        <div class="location">
+            <p id="location-name"><%= apiData.location.name %></p>
+            <p id="date"><%= dayOfWeek[0] %>, <%= apiData.location.localtime.substring(0,10) %></p>
+        </div>
+        <div class="temp">
+            <h2><%= apiData.current.temp_c %><span>&deg;c</span></h2>
+            <img src="https://<%= apiData.current.condition.icon.substring(2,apiData.current.condition.icon.length) %>" alt="">
+            <p><%= apiData.current.condition.text %></p>
+            
+        </div>
+        <div class="properties">
+            <div>
+                <p>H: <%= apiData.forecast.forecastday[0].day.maxtemp_c %>&deg</p>
+                <p>L: <%= apiData.forecast.forecastday[0].day.mintemp_c %>&deg</p>
+            </div>
+            <div><p>Humidity: <%= apiData.current.humidity %>%</p>
+                <p>Wind: <%= apiData.current.wind_kph %> kph <%= apiData.current.wind_dir %></p>
+            </div>
+            
+        </div>
+        </div>
+        <div class="forecast">
+            <% for(let i = 0; i < apiData.forecast.forecastday.length; i++) {%>
+                <div class="forecast-day">
+                <p><%= dayOfWeek[i].substring(0,3) %></p>
+                <p><%= apiData.forecast.forecastday[i].day.maxtemp_c %>&deg</p>
+                <p id="forecase-day-min"><%= apiData.forecast.forecastday[i].day.mintemp_c %>&deg</p>
+            </div>
+            <%}%>
+        </div>
+   
+</main>
