@@ -2,12 +2,12 @@
 
 Modern minimalist app that lets you view the weather of cities around the world.
 
-**Uses:** 
-WeatherAPI.com
-Typescript
-Express
-Ejs
+**Current Design**\
+![Current Design](./public/images/design.png)
+
+**Uses:** \
+WeatherAPI.com\
+Typescript\
+Express\
+Ejs\
 Axios
-
-
-
