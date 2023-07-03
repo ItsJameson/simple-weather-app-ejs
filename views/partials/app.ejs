@@ -1,4 +1,4 @@
-<% let dateOutput = `${apiData.location.localtime.substring(8, 10)}-${apiData.location.localtime.substring(5,7)}-${apiData.location.localtime.substring(0,4)}` %>
+<% let dateOutput = `${appData.apiData.location.localtime.substring(8, 10)}-${appData.apiData.location.localtime.substring(5,7)}-${appData.apiData.location.localtime.substring(0,4)}` %>
 
 <main>
     <div id="main-wrapper">
@@ -8,40 +8,76 @@
                 <button type="submit">Search</button>
             </form>
            
-                <p class="error" style="color: red; text-align: center; padding: 0.5rem;"><%= error %></p>
-     
+                <p class="error" style="color: red; text-align: center; padding: 0.5rem;"><%= appData.error %></p>
         </div>
+
         <div class="location">
-            <p id="location-name"><%= apiData.location.name %></p>
-            <p id="date"><%= dayOfWeek[0] %>, <%= dateOutput %></p>
+            <p id="location-name"><%= appData.apiData.location.name %></p>
+            <p id="date"><%= appData.dayOfWeek[0] %>, <%= dateOutput %></p>
         </div>
-        <div class="temp">
-            <h2><%= Math.ceil(apiData.current.temp_c) %><span>&deg;c</span></h2>
-            <img src="https://<%= apiData.current.condition.icon.substring(2,apiData.current.condition.icon.length) %>" alt="">
-            <p><%= apiData.current.condition.text %></p>
-            
-        </div>
-        <div class="properties">
-            <div>
-                <p>H: <%= Math.ceil(apiData.forecast.forecastday[0].day.maxtemp_c) %>&deg</p>
-                <p>L: <%= Math.ceil(apiData.forecast.forecastday[0].day.mintemp_c) %>&deg</p>
+
+        <% if (appData.standard == "C"){%>
+
+            <div class="temp">
+                <h2><%= Math.ceil(appData.apiData.current.temp_c) %><span>&deg;<a href="/?standard=<%= appData.standard %>">c</a></span></h2>
+                <img src="https://<%= appData.apiData.current.condition.icon.substring(2,appData.apiData.current.condition.icon.length) %>" alt="">
+                <p><%= appData.apiData.current.condition.text %></p>
             </div>
-            <div>
-                <p>Humidity: <%= Math.ceil(apiData.current.humidity) %>%</p>
-                <p>Wind: <%= Math.ceil(apiData.current.wind_kph) %> kph <%= apiData.current.wind_dir %></p>
+    
+            <div class="properties">
+                <div>
+                    <p>H: <%= Math.ceil(appData.apiData.forecast.forecastday[0].day.maxtemp_c) %>&deg</p>
+                    <p>L: <%= Math.ceil(appData.apiData.forecast.forecastday[0].day.mintemp_c) %>&deg</p>
+                </div>
+                <div>
+                    <p>Humidity: <%= Math.ceil(appData.apiData.current.humidity) %>%</p>
+                    <p>Wind: <%= Math.ceil(appData.apiData.current.wind_kph) %> kph <%= appData.apiData.current.wind_dir %></p>
+                </div>
             </div>
-            
-        </div>
-        </div>
-        <div class="forecast">
-            <% for(let i = 0; i < apiData.forecast.forecastday.length; i++) {%>
-                <div class="forecast-day">
-                <p><%= dayOfWeek[i].substring(0,3) %></p>
-                <p><%= Math.ceil(apiData.forecast.forecastday[i].day.maxtemp_c) %>&deg</p>
-                <p id="forecase-day-min"><%= Math.ceil(apiData.forecast.forecastday[i].day.mintemp_c) %>&deg</p>
             </div>
-            <%}%>
-        </div>
+    
+            <div class="forecast">
+                <% for(let i = 0; i < appData.apiData.forecast.forecastday.length; i++) {%>
+                    <div class="forecast-day">
+                    <p><%= appData.dayOfWeek[i].substring(0,3) %></p>
+                    <p><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.maxtemp_c) %>&deg</p>
+                    <p id="forecase-day-min"><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.mintemp_c) %>&deg</p>
+                </div>
+                <%}%>
+            </div>
+
+        <%} else { %>
+
+            <div class="temp">
+                <h2><%= Math.ceil(appData.apiData.current.temp_f) %><span>&deg;<a href="/?standard=<%= appData.standard %>">f</a></span></h2>
+                <img src="https://<%= appData.apiData.current.condition.icon.substring(2,appData.apiData.current.condition.icon.length) %>" alt="">
+                <p><%= appData.apiData.current.condition.text %></p>
+            </div>
+    
+            <div class="properties">
+                <div>
+                    <p>H: <%= Math.ceil(appData.apiData.forecast.forecastday[0].day.maxtemp_f) %>&deg</p>
+                    <p>L: <%= Math.ceil(appData.apiData.forecast.forecastday[0].day.mintemp_f) %>&deg</p>
+                </div>
+                <div>
+                    <p>Humidity: <%= Math.ceil(appData.apiData.current.humidity) %>%</p>
+                    <p>Wind: <%= Math.ceil(appData.apiData.current.wind_kph) %> kph <%= appData.apiData.current.wind_dir %></p>
+                </div>
+            </div>
+            </div>
+    
+            <div class="forecast">
+                <% for(let i = 0; i < appData.apiData.forecast.forecastday.length; i++) {%>
+                    <div class="forecast-day">
+                    <p><%= appData.dayOfWeek[i].substring(0,3) %></p>
+                    <p><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.maxtemp_f) %>&deg</p>
+                    <p id="forecase-day-min"><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.mintemp_f) %>&deg</p>
+                </div>
+                <%}%>
+            </div>
+
+        <%}%>
+        
    
 </main>
 <script>

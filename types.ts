@@ -1,3 +1,10 @@
+export interface AppData {
+    apiData: Weather | undefined,
+    dayOfWeek: string[],
+    standard: string,
+    error: string | undefined
+}
+
 export interface Weather {
     location: Location;
     current:  Current;
