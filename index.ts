@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
   appData.error = undefined;
 
   if (savedSearchQuery === "" && !req.query.standard) {
-    await getData("Antwerp");
+    await getData("Brussels");
     res.render("index", { appData });
   } else if (req.query.standard) {
     appData.apiData = apiDataTemp;

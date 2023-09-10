@@ -12,11 +12,11 @@
         </div>
 
         <div class="location">
-            <p id="location-name"><%= appData.apiData.location.name %></p>
+            <p id="location-name"><%= appData.apiData.location.name %>, <br><span><%= appData.apiData.location.country %></span></p>
             <p id="date"><%= appData.dayOfWeek[0] %>, <%= dateOutput %></p>
         </div>
 
-        <% if (appData.standard == "C"){%>
+        <% if (appData.standard == "F"){%>
 
             <div class="temp">
                 <h2><%= Math.ceil(appData.apiData.current.temp_c) %><span>&deg;<a href="/?standard=<%= appData.standard %>">c</a></span></h2>

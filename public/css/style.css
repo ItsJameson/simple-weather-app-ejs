@@ -121,6 +121,10 @@ main {
     text-align: center;
 }
 
+#location-name span {
+    font-size: 20px;
+}
+
 #date {
     text-align: center;
     color: lightgray;
@@ -267,10 +271,6 @@ footer p {
         font-size: 82px;
         padding: 0;
     }
-    
-    .temp h2 span {
-        font-size: 32px;
-    }
 
     .temp p {
         padding-bottom: 0.5rem;
@@ -319,10 +319,6 @@ footer p {
     .temp h2 {
         font-size: 82px;
         padding: 0;
-    }
-    
-    .temp h2 span {
-        font-size: 32px;
     }
 
     .temp p {
