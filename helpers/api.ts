@@ -1,5 +1,5 @@
 import axios from 'axios';
-require('dotenv').config({path:'./specs.env'});
+require('dotenv').config({path:'./.env'});
 const key = process.env.API_KEY as string;
 import {Weather, Current, Condition, Location} from '../types';
 

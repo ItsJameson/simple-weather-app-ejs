@@ -1,5 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
-require('dotenv').config({path:'./specs.env'});
+require('dotenv').config({path:'./.env'});
 
 const uri = process.env.SECRET_KEY as string;
 const client = new MongoClient(uri);

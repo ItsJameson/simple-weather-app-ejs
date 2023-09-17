@@ -236,6 +236,25 @@ main {
 
 /*#endregion*/
 
+/*#region--------------------------App forcast expanded-------------------------------*/
+
+.forecast-expanded {
+    display: flex;
+    background-color: var(--foreground-color);
+    box-shadow: 4px 4px 8px rgba(127, 127, 127, 0.13);
+    padding: 0.5rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: min(125ch, 100% - 4rem);
+    height: auto;
+    flex-wrap: wrap;
+}
+
+/*#endregion*/
+
 /*#region--------------------------Footer-------------------------------------*/
 
 footer {

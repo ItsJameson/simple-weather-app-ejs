@@ -68,11 +68,30 @@
     
             <div class="forecast">
                 <% for(let i = 0; i < appData.apiData.forecast.forecastday.length; i++) {%>
-                    <div class="forecast-day">
-                    <p><%= appData.dayOfWeek[i].substring(0,3) %></p>
-                    <p><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.maxtemp_f) %>&deg</p>
-                    <p id="forecase-day-min"><%= Math.ceil(appData.apiData.forecast.forecastday[i].day.mintemp_f) %>&deg</p>
-                </div>
+                    <div id="<%= i %>" class="forecast-day">
+                        <p>
+                            <%= appData.dayOfWeek[i].substring(0,3) %>
+                        </p>
+                        <p>
+                            <%= Math.ceil(appData.apiData.forecast.forecastday[i].day.maxtemp_f) %>&deg
+                        </p>
+                        <p id="forecase-day-min">
+                            <%= Math.ceil(appData.apiData.forecast.forecastday[i].day.mintemp_f) %>&deg
+                        </p>
+                    </div>
+                    
+                <%}%>
+                
+            </div>
+            <div class="forecast-expanded">
+                <% for(let i = 0; i < appData.apiData.forecast.forecastday.length; i++) {%>
+                    <div id="<%= i %>">
+                        <p><%= appData.dayOfWeek[i].substring(0,3) %>: 
+                            <%= appData.apiData.forecast.forecastday[i].day.condition.text %>
+                        </p>
+                        
+                    </div>
+                    
                 <%}%>
             </div>
 
